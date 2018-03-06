@@ -34,6 +34,7 @@ else
   echo "";
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     doIt;
+    say Neuinstallation abgeschlossen;
   fi;
 fi;
 unset doIt;

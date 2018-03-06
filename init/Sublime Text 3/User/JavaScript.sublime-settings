@@ -1,0 +1,15 @@
+{
+	"auto_indent": true,
+	"draw_white_space": "all",
+	"extensions":
+	[
+	],
+	"rulers":
+	[
+		79
+	],
+	"smart_indent": true,
+	"tab_size": 2,
+	"trim_automatic_white_space": true,
+	"use_tab_stops": true
+}

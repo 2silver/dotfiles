@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[import pdb; pdb.set_trace()]]></content>
+    <tabTrigger>pdb</tabTrigger>
+    <scope>source.python</scope>
+    <description>import pdb</description>
+</snippet>
+
+<!-- USAGE -->
+
+<!-- 1. Go to Tools -> New Snippet -->
+<!-- 2. Copy/Paste this entire file -->
+<!-- 3. Hit save -->
+<!-- 4. Name it importpdb.sublime-snippet -->
+<!-- 5. Save it under packages/user/ in sublime folder -->
+<!-- Type `pdb` to use the snippet! -->

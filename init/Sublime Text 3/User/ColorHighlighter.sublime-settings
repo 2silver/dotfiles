@@ -1,6 +1,1 @@
-{
-    "enabled": true,
-    //"ha_style": "underlined_solid", ("Filled", "outlined", "none", "underlined" (solid, strippled, squiggly))
-    "ha_style": "underlined",
-    "icons_all": false
-}
+/Users/nscgraf/.dotfiles/init/Sublime Text 3/User/ColorHighlighter.sublime-settings

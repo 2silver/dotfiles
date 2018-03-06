@@ -1,10 +1,1 @@
-{
-  "indent": 2,
-  "dasherize": false,
-  "old": false,
-  "path": "/usr/local/bin",
-  "beautifyOnSave": false,
-  "inlineComments": false,
-  "newlineBetweenSelectors": false,
-  "useSingleQuotes": true
-}
+/Users/nscgraf/.dotfiles/init/Sublime Text 3/User/SassBeautify.sublime-settings
