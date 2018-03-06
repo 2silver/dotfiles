@@ -1,0 +1,14 @@
+{
+
+    // Define region highlight styles
+    "bracket_styles": {
+        "default": {
+            "icon": "dot",
+            // BH1's original default color for reference
+            // "color": "entity.name.class",
+            "color": "brackethighlighter.default",
+            "style": "outline"
+        },
+    },
+
+}

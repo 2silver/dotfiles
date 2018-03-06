@@ -1,0 +1,82 @@
+# https://robferguson.org/blog/2017/10/06/how-to-install-opencv-and-python-using-homebrew-on-macos-sierra/
+# http://docs.python-guide.org/en/latest/starting/install/osx/
+
+update
+upgrade
+
+# Install Bash 4.
+# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
+# running `chsh`.
+install bash
+install bash-completion2
+
+# Switch to using brew-installed bash as default shell
+if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
+  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
+  chsh -s /usr/local/bin/bash;
+fi;
+
+# Install more recent versions of some OS X tools
+install coreutils # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+install findutils # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+install grep
+install highlight
+install java
+install openssl
+install openssh
+install readline
+install rename
+install screen
+install source-highlight
+install tidy-html5
+install tree
+install vim --override-system-vi
+install watch
+install watchman
+install wget --enable-iri # Install wget with IRI support
+install zsh
+
+# do not install script languages with brew the automatic way :-)
+# install python@2
+# install ruby
+
+install ffmpeg
+install freetype
+install giflib
+install jpeg
+install jpeg9
+install lame
+install libdvdcss # for HandBranke
+install libogg
+install libpng
+install libsass
+install libsodium
+install libtiff
+install libvorbis
+install libxml2
+install little-cms2
+install openjpeg
+install sdl2
+install sdl2_image
+install webp
+install woff2
+install x264
+install x265
+install xvid
+
+# testing
+install httpie # command line HTTP client
+install httping # Ping with HTTP requests
+install siege # http load tester and benchmarking utility
+
+install git
+install node
+install nvm
+install rvm
+install postgresql
+install sqlite
+install tig
+install yarn
+
+# Remove outdated versions from the cellar
+cleanup

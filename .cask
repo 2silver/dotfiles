@@ -1,0 +1,65 @@
+# Install native apps
+tap caskroom/cask
+# install brew-cask
+
+# install apps
+# https://mug.im/manage-your-mac-apps-with-homebrew-cask/
+
+#browser
+install google-chrome
+install google-chrome-canary
+install firefox
+install firefoxdeveloperedition
+install blisk
+
+#development
+install iterm2
+install parallels
+install transmit
+install sublime-text3
+# install atom --> not ready yet
+
+#database
+install navicat-premium
+
+#other
+install 1password
+install alfred
+install botframework-emulator
+install coconutbattery
+install docker
+install dropbox
+install flux
+install gemini
+install google-drive
+install handbrake
+install hazel
+install little-snitch
+install microsoft-office
+install microsoft-remote-desktop-beta
+install moom
+install onedrive
+install sip
+install skype
+install skype-for-business
+install slack
+install spotify
+install steam
+install the-unarchiver
+install timing
+install tunnelblick
+install tuxera-ntfs
+install virtualbox-extension-pack
+install vlc
+install whatsapp
+install ynab
+
+# diff tool
+install kaleidoscope
+
+install apache-directory-studio
+
+# automate everything
+install controlplane
+
+cleanup
