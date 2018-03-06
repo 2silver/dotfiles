@@ -1,1 +1,8 @@
-/Users/nscgraf/.dotfiles/init/Sublime Text 3/User/Preferences.sublime-settings
+{
+	"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"theme": "Cobalt2.sublime-theme"
+}

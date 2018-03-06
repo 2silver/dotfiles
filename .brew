@@ -4,17 +4,18 @@
 brew update
 brew upgrade
 
+# we use zsh :-)
 # brew install Bash 4.
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
 # running `chsh`.
-brew install bash
-brew install bash-completion2
-
-# Switch to using brew installed bash as default shell
-if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
-  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
-  chsh -s /usr/local/bin/bash;
-fi;
+# brew install bash
+# brew install bash-completion2
+#
+# # Switch to using brew installed bash as default shell
+# if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
+#   echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
+#   chsh -s /usr/local/bin/bash;
+# fi;
 
 # brew install more recent versions of some OS X tools
 brew install coreutils # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -70,13 +71,10 @@ brew install httping # Ping with HTTP requests
 brew install siege # http load tester and benchmarking utility
 
 brew install git
-brew install node
-brew install nvm
-brew install rvm
+# brew install nvm -> does not work view brew (use bootstrap.sh)
 brew install postgresql
 brew install sqlite
 brew install tig
-brew install yarn
 
 # Remove outdated versions from the cellar
 brew cleanup

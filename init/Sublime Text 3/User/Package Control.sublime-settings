@@ -1,1 +1,20 @@
-/Users/nscgraf/.dotfiles/init/Sublime Text 3/User/Package Control.sublime-settings
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"Babel",
+		"Color Highlighter",
+		"Package Control",
+		"SassBeautify",
+		"SideBarEnhancements",
+		"Solarized Color Scheme",
+		"SublimeLinter",
+		"SublimeLinter-contrib-htmlhint",
+		"SublimeLinter-eslint",
+		"Theme - Cobalt2"
+	]
+}

@@ -1,3 +1,13 @@
+## Pre-Installation
+
+### backup Sublime Text Settings
+/Users/nscgraf/Library/Application Support/Sublime Text 3/Packages/User/
+-> Package Control.sublime-settings
+-> Preferences.sublime-settings
+
+### backup iTerm2 settings
+
+
 ## Installation
 
 ### Using Git and the bootstrap script
