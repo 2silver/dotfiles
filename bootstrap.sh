@@ -10,6 +10,7 @@ function doIt() {
         --exclude ".macosx" \
         --exclude "bootstrap.sh" \
         --exclude "README.md" \
+        --exclude ".zshrc" \
         -avh --no-perms . ~;
 
   # NOT WORKING WITH source
@@ -42,7 +43,7 @@ function doIt() {
   # 
   ## nodejs / nvm
   # install nvm -> does not work view brew
-  # curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh |  bash
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh |  bash
 
   #
   ## rvm
@@ -63,6 +64,7 @@ else
     doIt;
     say Automatische Installation abgeschlossen!;
     say Nicht vergessen, Pakete installieren;
+    open ./packages.md
   fi;
 fi;
 
@@ -75,19 +77,3 @@ unset doIt;
 # ---------------
 # sublime text 3 user preferences
 # ln -fs ~/.dotfiles/init/Sublime\ Text\ 3/User/* ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
-
-# after reopen iterm
-# install latest lts version
-# nvm install --lts
-# 
-# # npm packages
-# npm install -g eslint # for sublimelint
-# npm install -g htmlhint@latest # for sublimelint
-# 
-# 
-# # See your latest local git branches, formatted real fancy
-# npm install --g git-recent
-# # Recall what you did on the last working day. Psst! or be nosy and find what someone else in your team did ;-)
-# npm install -g git-standup
-# 
-# 
