@@ -7,14 +7,17 @@
 	[
 		"Anaconda",
 		"Babel",
+		"BracketHighlighter",
 		"Color Highlighter",
+		"Emmet",
+		"Git",
+		"HTML5",
 		"Package Control",
 		"SassBeautify",
 		"SideBarEnhancements",
 		"Solarized Color Scheme",
 		"SublimeLinter",
 		"SublimeLinter-contrib-htmlhint",
-		"SublimeLinter-eslint",
-		"Theme - Cobalt2"
+		"SublimeLinter-eslint"
 	]
 }

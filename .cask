@@ -1,9 +1,5 @@
 # brew cask install native apps
-tap brew caskroom/cask
-# brew cask install brew-cask
-
-# brew cask install apps
-# https://mug.im/manage-your-mac-apps-with-homebrew-brew-cask/
+brew tap caskroom/cask
 
 #browser
 brew cask install google-chrome
