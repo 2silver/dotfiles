@@ -2,7 +2,8 @@
 
 ST_USERPATH="$HOME/Library/Application Support/Sublime Text 3/Packages/User";
 ST_SETTINGSPATH="$ST_USERPATH/Preferences.sublime-settings"
-ST_DOTFILEPATH="HOME/.dotfiles/init/sublimetext/Preferences.sublime-settings"
+ST_PACKAGESPATH="$ST_USERPATH/Package Control.sublime-settings"
+ST_PREFERENCESEPATH="HOME/.dotfiles/init/sublimetext/Preferences.sublime-settings"
 
 cd "$(dirname "${BASH_SOURCE}")";
 
@@ -45,16 +46,30 @@ function doIt() {
   fi
   # If file exists already, move into dotfiles (git will track differences)
   if [[ -f "$ST_SETTINGSPATH" ]] && [[ ! -h "$ST_SETTINGSPATH" ]]; then
-    echo "[sublimetext] User settings found, moving into dotfiles.. ($ST_DOTFILEPATH)"
-    mv "$ST_SETTINGSPATH" "$ST_DOTFILEPATH"
+    echo "[sublimetext] User settings found, moving into dotfiles.. ($ST_PREFERENCESEPATH)"
+    mv "$ST_SETTINGSPATH" "$ST_PREFERENCESEPATH"
   fi
   
   if [[ ! -L "$ST_SETTINGSPATH" ]]; then
     echo "[sublimetext] Symlinking settings path to dotfiles.. ($ST_SETTINGSPATH)"
-    ln -s "$ST_DOTFILEPATH" "$ST_SETTINGSPATH"
+    ln -s "$ST_PREFERENCESEPATH" "$ST_SETTINGSPATH"
   else
     echo "[sublimetext] Everything looks good here. Nothing to setup."
   fi
+
+  # If file exists already, move into dotfiles (git will track differences)
+  if [[ -f "$ST_SETTINGSPATH" ]] && [[ ! -h "$ST_SETTINGSPATH" ]]; then
+    echo "[sublimetext] User packages found, moving into dotfiles.. ($ST_PACKAGESPATH)"
+    mv "$ST_SETTINGSPATH" "$ST_PACKAGESPATH"
+  fi
+  
+  if [[ ! -L "$ST_SETTINGSPATH" ]]; then
+    echo "[sublimetext] Symlinking packages path to dotfiles.. ($ST_SETTINGSPATH)"
+    ln -s "$ST_PACKAGESPATH" "$ST_SETTINGSPATH"
+  else
+    echo "[sublimetext] Everything looks good here. Nothing to setup."
+  fi
+
   ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 
 }
@@ -73,11 +88,3 @@ else
 fi;
 
 unset doIt;
-
-
-# new from me
-
-# create symlinks
-# ---------------
-# sublime text 3 user preferences
-# ln -fs ~/.dotfiles/init/Sublime\ Text\ 3/User/* ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
