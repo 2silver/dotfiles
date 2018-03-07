@@ -1,47 +1,33 @@
 ## Pre-Installation
 
-### backup Sublime Text Settings
-/Users/nscgraf/Library/Application Support/Sublime Text 3/Packages/User/
--> Package Control.sublime-settings
--> Preferences.sublime-settings
-
-### backup iTerm2 settings
+- backup SSH Keys
 
 
 ## Installation
 
 ### Using Git and the bootstrap script
 
+### Install Homebrew
 ```bash
-git clone REPOSITORY && cd dotfiles && source bootstrap.sh
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-To update, `cd` into your local `dotfiles` repository and then:
+### Copy SSH-Key
+
+###Clone dotfile Repository and install
 
 ```bash
-source bootstrap.sh
+cd ~/ && git clone git@bitbucket.org:polygonstudio/dotfiles.git ./.dotfiles && cd ./.dotfiles && source bootstrap.sh
 ```
-
-Alternatively, to update while avoiding the confirmation prompt:
-
-### Add custom commands without creating a new fork
-
-If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
-
-You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/mathiasbynens/dotfiles/fork) instead, though.
 
 ### Sensible OS X defaults
-
 When setting up a new Mac, you may want to set some sensible OS X defaults:
 
 ```bash
-./.macos
+source ./.dotfiles/.macosx
 ```
 
-### Install Homebrew formulae
 
-When setting up a new Mac, you may want to install some common [Homebrew](http://brew.sh/) formulae (after installing Homebrew, of course):
+### Install packages
 
-```bash
-./brew.sh
-```
+view packages.md
