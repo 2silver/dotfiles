@@ -58,9 +58,6 @@ function doIt() {
     echo "[sublimetext settings] Everything looks good here. Nothing to setup."
   fi
 
-
-
-
   # If file exists already, move into dotfiles (git will track differences)
   if [[ -f "$ST_PACKAGESPATH" ]] && [[ ! -h "$ST_PACKAGESPATH" ]]; then
     echo "[sublimetext packages] User packages found, moving into dotfiles.. ($ST_PACKAGESPATH)"
