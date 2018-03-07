@@ -14,6 +14,12 @@
 
 ### Copy SSH-Key
 
+### Install fonts
+```bash
+~/.dotfiles/init/iterm
+```
+
+
 ###Clone dotfile Repository and install
 
 ```bash
