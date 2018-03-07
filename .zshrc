@@ -7,7 +7,7 @@ export ZSH=/Users/nscgraf/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="cobalt2" -> not working anymore
-ZSH_THEME="refined"
+ZSH_THEME="agnoster"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
