@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+ST_USERPATH="$HOME/Library/Application Support/Sublime Text 3/Packages/User";
+ST_SETTINGSPATH="$ST_USERPATH/Preferences.sublime-settings"
+ST_DOTFILEPATH="HOME/.dotfiles/init/sublimetext/Preferences.sublime-settings"
+
 cd "$(dirname "${BASH_SOURCE}")";
 
 git pull origin master;
@@ -11,34 +15,11 @@ function doIt() {
         --exclude "bootstrap.sh" \
         --exclude "README.md" \
         --exclude ".zshrc" \
+        --exclude "init" \
         -avh --no-perms . ~;
-
-  # NOT WORKING WITH source
-  # ln -sf ./.aliases ~/.aliases;
-  # ln -sf ./.bash_profile ~/.bash_profile;
-  # ln -sf ./.buildout ~/.buildout;
-  # ln -sf ./.editorconfig ~/.editorconfig;
-  # ln -sf ./.exports ~/.exports;
-  # ln -sf ./.functions ~/.functions;
-  # ln -sf ./.gitattributes ~/.gitattributes;
-  # ln -sf ./.gitconfig ~/.gitconfig;
-  # ln -sf ./.gitignore ~/.gitignore;
-  # ln -sf ./.inputrc ~/.inputrc;
-  # ln -sf ./.screenrc ~/.screenrc;
-  # ln -sf ./.vim ~/.vim;
-  # ln -sf ./.vimrc ~/.vimrc;
-  # ln -sf ./.wgetrc ~/.wgetrc;
 
   # Load bash profile
   source ~/.bash_profile;
-
-  # Sublime Text
-  ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
-  ln -sf "/Users/nscgraf/.dotfiles/init/Sublime\ Text\ 3/User/Package\ Control.sublime-settings" "/Users/nscgraf/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/"
-
-  # install oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)";
-  cp ./.zshrc ~/.zshrc;
 
   # 
   ## nodejs / nvm
@@ -52,7 +33,30 @@ function doIt() {
   source .brew
   source .cask
 
-  source .macosx
+  # install oh-my-zsh
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)";
+  cp ./.zshrc ~/.zshrc;
+
+  # Sublime Text
+  # Make settings folder if it doesn't exist
+  if [[ ! -d "$ST_USERPATH" ]]; then
+    echo "[sublimetext] Making settings folder.. ($ST_USERPATH)"
+    mkdir -p "$ST_USERPATH"
+  fi
+  # If file exists already, move into dotfiles (git will track differences)
+  if [[ -f "$ST_SETTINGSPATH" ]] && [[ ! -h "$ST_SETTINGSPATH" ]]; then
+    echo "[sublimetext] User settings found, moving into dotfiles.. ($ST_DOTFILEPATH)"
+    mv "$ST_SETTINGSPATH" "$ST_DOTFILEPATH"
+  fi
+  
+  if [[ ! -L "$ST_SETTINGSPATH" ]]; then
+    echo "[sublimetext] Symlinking settings path to dotfiles.. ($ST_SETTINGSPATH)"
+    ln -s "$ST_DOTFILEPATH" "$ST_SETTINGSPATH"
+  else
+    echo "[sublimetext] Everything looks good here. Nothing to setup."
+  fi
+  ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
