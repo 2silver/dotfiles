@@ -1,10 +1,10 @@
 {
 	"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
+	"font_face": "Inconsolata",
+	"font_size": 12,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
-	"theme": "Adaptive.sublime-theme",
-	"font_face": "Inconsolata",
-	    "font_size": 12,
+	"theme": "Adaptive.sublime-theme"
 }

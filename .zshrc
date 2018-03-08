@@ -60,3 +60,6 @@ add-zsh-hook chpwd load-nvmrc
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+#python2 (brew)
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"

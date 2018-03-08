@@ -4,6 +4,9 @@
 brew update
 brew upgrade
 
+# simple control brew services (ex. postgresql -> 'brew services start postgresql')
+brew tap homebrew/services
+
 # we use zsh :-)
 # brew install Bash 4.
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
