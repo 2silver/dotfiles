@@ -20,6 +20,7 @@ brew cask install navicat-premium
 
 #other
 brew cask install 1password
+brwe cask install keepassx
 brew cask install alfred
 brew cask install botframework-emulator
 brew cask install coconutbattery
