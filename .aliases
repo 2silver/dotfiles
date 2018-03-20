@@ -18,6 +18,11 @@ alias h="history"
 alias v="vim"
 alias o="open"
 
+# pretty print json
+# usage: curl **.json | prettyjson
+# usage: prettyjson myfile.json
+alias prettyjson="python -m json.tool"
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
     colorflag="--color"

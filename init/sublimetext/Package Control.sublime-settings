@@ -13,6 +13,8 @@
 		"Emmet",
 		"Git",
 		"HTML5",
+		"isort",
+		"JsPrettier",
 		"Package Control",
 		"SassBeautify",
 		"SideBarEnhancements",

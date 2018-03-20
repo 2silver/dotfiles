@@ -6,5 +6,11 @@
 	[
 		"Vintage"
 	],
-	"theme": "Adaptive.sublime-theme"
+	"rulers":
+	[
+		80,
+		120
+	],
+	"theme": "Adaptive.sublime-theme",
+	"translate_tabs_to_spaces": true
 }
