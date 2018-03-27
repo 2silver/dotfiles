@@ -10,17 +10,22 @@
 		"Babel",
 		"BracketHighlighter",
 		"Color Highlighter",
+		"CSS Extended Completions",
 		"Emmet",
 		"Git",
+		"HTML-CSS-JS Prettify",
 		"HTML5",
 		"isort",
 		"JsPrettier",
 		"Package Control",
+		"Sass",
 		"SassBeautify",
 		"SideBarEnhancements",
 		"Solarized Color Scheme",
 		"SublimeLinter",
 		"SublimeLinter-contrib-htmlhint",
+		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-contrib-stylelint",
 		"SublimeLinter-eslint"
 	]
 }
