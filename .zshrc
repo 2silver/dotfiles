@@ -6,20 +6,21 @@ ZSH_THEME="agnoster"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-plugins=(git)
+plugins=(zsh-completions zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 export PATH="/usr/local/bin:/usr/local/opt:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$PATH"
 export EDITOR='subl -w'
+export MANPATH="/usr/local/man:$MANPATH"
 
 # deactivate share_history
 unsetopt share_history
 
 source ~/.aliases
 source ~/.functions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # rvm
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

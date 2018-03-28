@@ -39,10 +39,13 @@ brew install watch
 brew install watchman
 brew install wget --enable-iri # Install wget with IRI support
 brew install zsh
+brew install zsh-completions
+brew install zsh-autosuggestions
 
 # do not brew install script languages with brew the automatic way :-)
 # brew install python@2
 # brew install ruby
+brew install pipenv
 
 brew install ffmpeg
 brew install freetype
