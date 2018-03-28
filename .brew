@@ -1,8 +1,12 @@
 # https://robferguson.org/blog/2017/10/06/how-to-brew install-opencv-and-python-using-homebrew-on-macos-sierra/
 # http://docs.python-guide.org/en/latest/starting/brew install/osx/
 
-brew update
-brew upgrade
+# Install brew basics (auto-updating).
+# brew update
+# brew upgrade
+brew install terminal-notifier
+brew tap domt4/autoupdate
+brew autoupdate --start --upgrade --cleanup --enable-notifications
 
 # simple control brew services (ex. postgresql -> 'brew services start postgresql')
 brew tap homebrew/services
