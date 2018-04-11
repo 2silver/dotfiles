@@ -80,7 +80,7 @@ brew install httpie # command line HTTP client
 brew install httping # Ping with HTTP requests
 brew install siege # http load tester and benchmarking utility
 
-brew install git
+# brew install git -> installed by bootstrap.sh
 # brew install nvm -> does not work view brew (use bootstrap.sh)
 brew install postgresql
 brew install sqlite

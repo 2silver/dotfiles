@@ -1,0 +1,47 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "editor.formatOnPaste": false,
+    "editor.autoIndent": true,
+    "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 12,
+    "editor.fontWeight": "normal",
+    "editor.renderWhitespace": "all",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "workbench.list.multiSelectModifier": "alt",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.pyc": true,
+        "**/*.pyo": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        ".build/**": true,
+        "out/**": true,
+        "out-build/**": true,
+        "out-vscode/**": true,
+        "i18n/**": true,
+        "extensions/**/out/**": true,
+        "test/smoke/out/**": true
+    },
+    "workbench.colorTheme": "Monokai",
+    "python.linting.pep8Enabled": true,
+    "python.formatting.autopep8Args": [
+        "--aggressive",
+        "--aggressive"
+    ],
+    "python.autoComplete.addBrackets": true,
+    "editor.rulers": [
+        140
+    ],
+    "[python]": {
+        "editor.rulers": [
+            79,
+            120
+        ]
+    }
+}

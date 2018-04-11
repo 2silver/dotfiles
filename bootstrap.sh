@@ -1,37 +1,85 @@
 #!/usr/bin/env bash
 
-ST_USERPATH="$HOME/Library/Application Support/Sublime Text 3/Packages/User";
-ST_SETTINGSPATH="$ST_USERPATH/Preferences.sublime-settings"
-ST_PACKAGESPATH="$ST_USERPATH/Package Control.sublime-settings"
-ST_SETTINGSDOTFILEPATH="$HOME/.dotfiles/init/sublimetext/Preferences.sublime-settings"
-ST_PACKAGESDOTFILEPATH="$HOME/.dotfiles/init/sublimetext/Package Control.sublime-settings"
+# thanks to brew for sh code parts !!
 
-cd "$(dirname "${BASH_SOURCE}")";
+main(){
+  # Use colors, but only if connected to a terminal, and that terminal
+  # supports them.
+  if which tput >/dev/null 2>&1; then
+      ncolors=$(tput colors)
+  fi
+  if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
+    RED="$(tput setaf 1)"
+    GREEN="$(tput setaf 2)"
+    YELLOW="$(tput setaf 3)"
+    BLUE="$(tput setaf 4)"
+    BOLD="$(tput bold)"
+    NORMAL="$(tput sgr0)"
+  else
+    RED=""
+    GREEN=""
+    YELLOW=""
+    BLUE=""
+    BOLD=""
+    NORMAL=""
+  fi
 
-git pull origin master;
+  # Only enable exit-on-error after the non-critical colorization stuff,
+  # which may fail on systems lacking tput or terminfo
+  set -e
 
-function doIt() {
-  rsync --exclude ".git/" \
-        --exclude ".DS_Store" \
-        --exclude ".macosx" \
-        --exclude "bootstrap.sh" \
-        --exclude "README.md" \
-        --exclude ".zshrc" \
-        --exclude "init" \
-        -avh --no-perms . ~;
+  # setup Variables
+  VSCODE_USERPATH="$HOME/Library/Application\ Support/Code/User";
+  VSCODE_DOTFILEPATH="$HOME/.dotfiles/init/vscode/"
 
+  if [ ! -n "$DIR" ]; then
+    DIR=~/.dotfiles
+  fi
+
+  # Install HomeBrew
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  # install brew + cask packages
+  brew install git
+  # we can now fetch out .dotfiles from repository
+
+  # Prevent the cloned repository from having insecure permissions. Failing to do
+  # so causes compinit() calls to fail with "command not found: compdef" errors
+  # for users with insecure umasks (e.g., "002", allowing group writability). Note
+  # that this will be ignored under Cygwin by default, as Windows ACLs take
+  # precedence over umasks except for filesystems mounted with option "noacl".
+  umask g-w,o-w
+
+  printf "${BLUE}Cloning Dotfiles...${NORMAL}\n"
+  hash git >/dev/null 2>&1 || {
+    echo "Error: git is not installed"
+    exit 1
+  }
+  # The Windows (MSYS) Git is not compatible with normal use on cygwin
+  if [ "$OSTYPE" = cygwin ]; then
+    if git --version | grep msysgit > /dev/null; then
+      echo "Error: Windows/MSYS Git is not supported on Cygwin"
+      echo "Error: Make sure the Cygwin git package is installed and is first on the path"
+      exit 1
+    fi
+  fi
+  env git clone https://github.com/2silver/dotfiles $DIR || {
+    printf "Error: git clone of .dotfiles repo failed\n"
+    exit 1
+  }
+
+  # make an symbolic link for all . in folder .dotfiles
+  ln -sf ~/.dotfiles/.* ~/
+
+  # setup all configs ...
   # Load bash profile
   source ~/.bash_profile;
-
-  # 
   ## nodejs / nvm
-  # install nvm -> does not work view brew
+  # install nvm -> does not work with brew
   curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh |  bash
-
-  #
   ## rvm
   curl -sSL https://get.rvm.io | bash -s stable
 
+  # install brew + cask
   source .brew
   source .cask
 
@@ -40,52 +88,40 @@ function doIt() {
   cp "$HOME/.dotfiles/init/iterm/cobalt2.zsh-theme" "$ZSH/themes/"
   cp ./.zshrc ~/.zshrc
 
-  # Sublime Text
+  # Microsoft Visual Code
   # Make settings folder if it doesn't exist
-  if [[ ! -d "$ST_USERPATH" ]]; then
-    echo "[sublimetext settings] Making settings folder.. ($ST_USERPATH)"
-    mkdir -p "$ST_USERPATH"
+  if [[ ! -d "$VSCODE_USERPATH" ]]; then
+    echo "[vscode settings] Making settings folder.. ($ST_USERPATH)"
+    ln -sfn "$VSCODE_DOTFILEPATH"/* "$VSCODE_USERPATH"
   fi
   # If file exists already, move into dotfiles (git will track differences)
-  if [[ -f "$ST_SETTINGSPATH" ]] && [[ ! -h "$ST_SETTINGSPATH" ]]; then
-    echo "[sublimetext settings] User settings found, moving into dotfiles.. ($ST_SETTINGSDOTFILEPATH)"
-    mv "$ST_SETTINGSPATH" "$ST_SETTINGSDOTFILEPATH"
-  fi
-  
-  if [[ ! -L "$ST_SETTINGSPATH" ]]; then
-    echo "[sublimetext settings] Symlinking settings path to dotfiles.. ($ST_SETTINGSPATH)"
-    ln -s "$ST_SETTINGSDOTFILEPATH" "$ST_SETTINGSPATH"
-  else
-    echo "[sublimetext settings] Everything looks good here. Nothing to setup."
+  if [[ -f "$VSCODE_USERPATH" ]] && [[ ! -h "$VSCODE_USERPATH" ]]; then
+    echo "[vscode settings] User settings found, moving into dotfiles.. ($VSCODE_DOTFILEPATH)"
+    rm -rf "$VSCODE_USERPATH"
+    ln -sfn "$VSCODE_DOTFILEPATH"/* "$VSCODE_USERPATH"
   fi
 
-  # If file exists already, move into dotfiles (git will track differences)
-  if [[ -f "$ST_PACKAGESPATH" ]] && [[ ! -h "$ST_PACKAGESPATH" ]]; then
-    echo "[sublimetext packages] User packages found, moving into dotfiles.. ($ST_PACKAGESPATH)"
-    mv "$ST_PACKAGESPATH" "$ST_PACKAGESDOTFILEPATH"
-  fi
-  
-  if [[ ! -L "$ST_PACKAGESPATH" ]]; then
-    echo "[sublimetext packages] Symlinking packages path to dotfiles.. ($ST_PACKAGESPATH)"
-    ln -s "$ST_PACKAGESDOTFILEPATH" "$ST_PACKAGESPATH"
-  else
-    echo "[sublimetext packages] Everything looks good here. Nothing to setup."
-  fi
-
-  ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
-
+  printf "${GREEN}"
+  echo ''
+  echo '     _       _    __ _ _           '
+  echo '    | |     | |  / _(_) |          '
+  echo '  __| | ___ | |_| |_ _| | ___  ___ '
+  echo ' / _` |/ _ \| __|  _| | |/ _ \/ __|'
+  echo '| (_| | (_) | |_| | | | |  __/\__ \'
+  echo ' \__,_|\___/ \__|_| |_|_|\___||___/    .... are now installed'
+  echo ''
+  echo ''
+  echo 'Setup complete, thank you'
+  echo ''
+  echo ''
+  printf "${NORMAL}"
 }
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-  doIt;
-else
-  read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-  echo "";
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-    doIt;
-    say Automatische Installation abgeschlossen!;
-    say Nicht vergessen, Pakete installieren;
-  fi;
+read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  main;
+  say Automatische Installation abgeschlossen!;
+  say Nicht vergessen, Pakete installieren;
 fi;
-
-unset doIt;
+unset main;
