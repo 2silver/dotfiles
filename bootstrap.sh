@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
-
-ST_USERPATH="$HOME/Library/Application Support/Sublime Text 3/Packages/User";
-ST_SETTINGSPATH="$ST_USERPATH/Preferences.sublime-settings"
-ST_PACKAGESPATH="$ST_USERPATH/Package Control.sublime-settings"
-ST_SETTINGSDOTFILEPATH="$HOME/.dotfiles/init/sublimetext/Preferences.sublime-settings"
-ST_PACKAGESDOTFILEPATH="$HOME/.dotfiles/init/sublimetext/Package Control.sublime-settings"
+VSCODE_USERPATH="$HOME/Library/Application\ Support/Code/User";
+VSCODE_DOTFILEPATH="$HOME/.dotfiles/init/vscode/"
 
 cd "$(dirname "${BASH_SOURCE}")";
 
@@ -23,7 +19,7 @@ function doIt() {
   # Load bash profile
   source ~/.bash_profile;
 
-  # 
+  #
   ## nodejs / nvm
   # install nvm -> does not work view brew
   curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh |  bash
@@ -42,37 +38,16 @@ function doIt() {
 
   # Sublime Text
   # Make settings folder if it doesn't exist
-  if [[ ! -d "$ST_USERPATH" ]]; then
-    echo "[sublimetext settings] Making settings folder.. ($ST_USERPATH)"
-    mkdir -p "$ST_USERPATH"
+  if [[ ! -d "$VSCODE_USERPATH" ]]; then
+    echo "[vscode settings] Making settings folder.. ($ST_USERPATH)"
+    ln -s "$VSCODE_DOTFILEPATH"/* "$VSCODE_USERPATH"
   fi
   # If file exists already, move into dotfiles (git will track differences)
-  if [[ -f "$ST_SETTINGSPATH" ]] && [[ ! -h "$ST_SETTINGSPATH" ]]; then
-    echo "[sublimetext settings] User settings found, moving into dotfiles.. ($ST_SETTINGSDOTFILEPATH)"
-    mv "$ST_SETTINGSPATH" "$ST_SETTINGSDOTFILEPATH"
+  if [[ -f "$VSCODE_USERPATH" ]] && [[ ! -h "$VSCODE_USERPATH" ]]; then
+    echo "[vscode settings] User settings found, moving into dotfiles.. ($VSCODE_DOTFILEPATH)"
+    rm -rf "$VSCODE_USERPATH"
+    ln -s "$VSCODE_DOTFILEPATH"/* "$VSCODE_USERPATH"
   fi
-  
-  if [[ ! -L "$ST_SETTINGSPATH" ]]; then
-    echo "[sublimetext settings] Symlinking settings path to dotfiles.. ($ST_SETTINGSPATH)"
-    ln -s "$ST_SETTINGSDOTFILEPATH" "$ST_SETTINGSPATH"
-  else
-    echo "[sublimetext settings] Everything looks good here. Nothing to setup."
-  fi
-
-  # If file exists already, move into dotfiles (git will track differences)
-  if [[ -f "$ST_PACKAGESPATH" ]] && [[ ! -h "$ST_PACKAGESPATH" ]]; then
-    echo "[sublimetext packages] User packages found, moving into dotfiles.. ($ST_PACKAGESPATH)"
-    mv "$ST_PACKAGESPATH" "$ST_PACKAGESDOTFILEPATH"
-  fi
-  
-  if [[ ! -L "$ST_PACKAGESPATH" ]]; then
-    echo "[sublimetext packages] Symlinking packages path to dotfiles.. ($ST_PACKAGESPATH)"
-    ln -s "$ST_PACKAGESDOTFILEPATH" "$ST_PACKAGESPATH"
-  else
-    echo "[sublimetext packages] Everything looks good here. Nothing to setup."
-  fi
-
-  ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 
 }
 

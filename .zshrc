@@ -12,7 +12,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export PATH="/usr/local/bin:/usr/local/opt:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$PATH"
-export EDITOR='subl -w'
+export EDITOR='code'
 export MANPATH="/usr/local/man:$MANPATH"
 
 # deactivate share_history
@@ -24,7 +24,7 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # rvm
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
