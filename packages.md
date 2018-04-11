@@ -8,7 +8,7 @@ install latest lts version
 
 ## npm packages
 for sublimelint
-```npm install -g eslint htmlhint@latest```
+```npm install -g eslint eslint-plugin-prettier htmlhint@latest```
 
 # # See your latest local git branches, formatted real fancy
 ```npm install --g git-recent```
