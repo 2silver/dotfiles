@@ -7,11 +7,6 @@
 
 ### Using Git and the bootstrap script
 
-### Install Homebrew
-```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
 ### Copy SSH-Key
 
 ### Install fonts
@@ -23,7 +18,7 @@
 ###Clone dotfile Repository and install
 
 ```bash
-cd ~/ && git clone git@bitbucket.org:polygonstudio/dotfiles.git ./.dotfiles && cd ./.dotfiles && source bootstrap.sh
+cd ~/ && git clone git@gitlab.com:2silver/dotfiles.git ./.dotfiles && cd ./.dotfiles && source bootstrap.sh
 ```
 
 ### Sensible OS X defaults
