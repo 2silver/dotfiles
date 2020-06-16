@@ -28,8 +28,8 @@
         "extensions/**/out/**": true,
         "test/smoke/out/**": true
     },
-    "workbench.colorTheme": "Monokai",
-    "python.linting.pep8Enabled": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "python.linting.pycodestyleEnabled": true,
     "python.formatting.autopep8Args": [
         "--aggressive",
         "--aggressive"
@@ -43,5 +43,11 @@
             79,
             120
         ]
-    }
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.startupEditor": "newUntitledFile"
 }

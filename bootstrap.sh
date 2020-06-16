@@ -50,24 +50,6 @@ main(){
   # precedence over umasks except for filesystems mounted with option "noacl".
   umask g-w,o-w
 
-  printf "${BLUE}Cloning Dotfiles...${NORMAL}\n"
-  hash git >/dev/null 2>&1 || {
-    echo "Error: git is not installed"
-    exit 1
-  }
-  # The Windows (MSYS) Git is not compatible with normal use on cygwin
-  if [ "$OSTYPE" = cygwin ]; then
-    if git --version | grep msysgit > /dev/null; then
-      echo "Error: Windows/MSYS Git is not supported on Cygwin"
-      echo "Error: Make sure the Cygwin git package is installed and is first on the path"
-      exit 1
-    fi
-  fi
-  env git clone https://github.com/2silver/dotfiles $DIR || {
-    printf "Error: git clone of .dotfiles repo failed\n"
-    exit 1
-  }
-
   # make an symbolic link for all . in folder .dotfiles
   ln -sf ~/.dotfiles/.* ~/
 
@@ -101,6 +83,14 @@ main(){
     rm -rf "$VSCODE_USERPATH"
     ln -sfn "$VSCODE_DOTFILEPATH"/* "$VSCODE_USERPATH"
   fi
+
+  # if automatic is not working use this
+  # ln -s /Users/nscgraf/.dotfiles/init/vscode/settings.json /Users/nscgraf/Library/Application\ Support/Code/User/settings.json
+  # ln -s /Users/nscgraf/.dotfiles/init/vscode/keybindings.json /Users/nscgraf/Library/Application\ Support/Code/User/keybindings.json
+  # ln -s /Users/nscgraf/.dotfiles/init/vscode/snippets/ /Users/nscgraf/Library/Application\ Support/Code/User
+  # END
+
+
 
   printf "${GREEN}"
   echo ''

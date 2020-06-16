@@ -6,7 +6,28 @@ ZSH_THEME="agnoster"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-plugins=(zsh-completions zsh-autosuggestions)
+# install zsh-completions, zsh-autosuggestions via breww
+# if type brew &>/dev/null; then
+#   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+#   autoload -Uz compinit
+#   compinit
+# fi
+# 
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# END
+
+plugins=(
+  zsh-completions
+  zsh-autosuggestions
+  # # git
+  # # git-prompt
+  # # history
+  # pyenv
+  # python
+)
+autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
@@ -20,7 +41,6 @@ unsetopt share_history
 
 source ~/.aliases
 source ~/.functions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # rvm
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
@@ -44,3 +64,5 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # python2 (brew)
 export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

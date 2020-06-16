@@ -8,6 +8,7 @@ brew cask install homebrew/cask-versions/google-chrome-canary
 brew cask install firefox
 brew cask install homebrew/cask-versions/firefox-developer-edition
 brew cask install blisk
+brew cask install brave-browser
 
 #development
 brew cask install iterm2
@@ -26,9 +27,10 @@ brew cask install keepassx
 brew cask install alfred
 brew cask install bot-framework-emulator
 brew cask install coconutbattery
-brew cask install docker
+# brew cask install docker  # brew install docker isn't enough??
 brew cask install dropbox
 brew cask install flux
+brew cask install franz
 brew cask install gemini
 brew cask install google-backup-and-sync
 brew cask install handbrake
@@ -46,7 +48,8 @@ brew cask install spotify
 brew cask install steam
 brew cask install the-unarchiver
 brew cask install timing
-brew cask install tunnelblick
+# brew cask install tunnelblick
+brew cask install coccinellida
 brew cask install tuxera-ntfs
 brew cask install virtualbox-extension-pack
 brew cask install vlc

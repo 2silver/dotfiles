@@ -38,18 +38,26 @@ brew install screen
 brew install source-highlight
 brew install tidy-html5
 brew install tree
-brew install vim --override-system-vi
+brew install vim
 brew install watch
 brew install watchman
-brew install wget --enable-iri # Install wget with IRI support
+brew install wget
 brew install zsh
-brew install zsh-completions
-brew install zsh-autosuggestions
+brew install docker
+# brew install zsh-completions   #-> not working
+# brew install zsh-autosuggestions   #-> not working
+
+# Type git recent to see your latest local git branches
+brew install git-recent
+
+# Recall what you did on the last working day ..or be nosy and find what someone else did.
+# git standup
+brew install git-standup
 
 # do not brew install script languages with brew the automatic way :-)
 # brew install python@2
 # brew install ruby
-brew install pipenv
+# brew install pipenv
 
 brew install ffmpeg
 brew install freetype
