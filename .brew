@@ -32,6 +32,7 @@ brew install highlight
 brew install java
 brew install openssl
 brew install openssh
+brew install sshfs  # --> need osxfuse -> .cask
 brew install readline
 brew install rename
 brew install screen
@@ -82,6 +83,7 @@ brew install woff2
 brew install x264
 brew install x265
 brew install xvid
+brew install zlib
 
 # testing
 brew install httpie # command line HTTP client

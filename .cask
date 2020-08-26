@@ -37,9 +37,12 @@ brew cask install handbrake
 brew cask install hazel
 brew cask install little-snitch
 # brew cask install microsoft-office  # install using online office365 packages
-brew cask install homebrew/cask-versions/microsoft-remote-desktop-beta
 # brew cask install moom --> installed from AppStore (License)
+# brew cask install tunnelblick
+brew cask install coccinellida
+brew cask install homebrew/cask-versions/microsoft-remote-desktop-beta
 brew cask install onedrive
+brew cask install osxfuse
 brew cask install sip
 brew cask install skype
 brew cask install skype-for-business
@@ -47,9 +50,8 @@ brew cask install slack
 brew cask install spotify
 brew cask install steam
 brew cask install the-unarchiver
+brew cask install time-out
 brew cask install timing
-# brew cask install tunnelblick
-brew cask install coccinellida
 brew cask install tuxera-ntfs
 brew cask install virtualbox-extension-pack
 brew cask install vlc
