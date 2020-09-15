@@ -35,6 +35,7 @@ brew cask install gemini
 brew cask install google-backup-and-sync
 brew cask install handbrake
 brew cask install hazel
+brew cask install ngrok
 brew cask install little-snitch
 # brew cask install microsoft-office  # install using online office365 packages
 # brew cask install moom --> installed from AppStore (License)
