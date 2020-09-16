@@ -62,7 +62,7 @@ main(){
 
   # Install HomeBrew
   if ! command -v brew >/dev/null; then
-    fancy_echo "Installing Homebrew ..."
+    fancy_echo "- Installing Homebrew ..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
     append_to_zshrc
@@ -71,6 +71,7 @@ main(){
     append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
 
     export PATH="/usr/local/bin:$PATH"
+    fancy_echo "    ${GREEN}done${NORMAL}"
   fi
 
   # Prevent the cloned repository from having insecure permissions. Failing to do
@@ -101,34 +102,41 @@ main(){
   ln -sf ~/.dotfiles/.vimrc ~/.vimrc
   ln -sf ~/.dotfiles/.wgetrc ~/.wgetrc
   ln -sf ~/.dotfiles/.zshrc ~/.zshrc
+  fancy_echo "    ${GREEN}done${NORMAL}"
 
   # setup all configs ...
   fancy_echo "- Bash Profile ..."
   # Load bash profile
   source ~/.bash_profile;
+  fancy_echo "    ${GREEN}done${NORMAL}"
 
   # install brew + cask packages
   fancy_echo "- Homebrew git ..."
   brew install git
+  fancy_echo "    ${GREEN}done${NORMAL}"
 
   # install oh-my-zsh
   fancy_echo "- Zsh ..."
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   cp "$HOME/.dotfiles/init/iterm/cobalt2.zsh-theme" "$ZSH/themes/"
   cp ./.zshrc ~/.zshrc
+  fancy_echo "    ${GREEN}done"
 
   # install brew + cask
   # fancy_echo "- brew / cask ..."
   # source .brew
   # source .cask
+  # fancy_echo "    done"
 
   # install nvm -> does not work with brew
   fancy_echo "- Node Version Manager ..."
   curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+  fancy_echo "    ${GREEN}done${NORMAL}"
 
   ## rvm
   fancy_echo "- Ruby Version Manager ..."
   curl -sSL https://get.rvm.io | bash -s stable
+  fancy_echo "${GREEN}    done${NORMAL}"
 
   # Microsoft Visual Code
   # Make settings folder if it doesn't exist
