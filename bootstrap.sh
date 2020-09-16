@@ -35,25 +35,6 @@ fancy_echo() {
   printf "\n$fmt\n" "$@"
 }
 
-append_to_zshrc() {
-  local text="$1" zshrc
-  local skip_new_line="${2:-0}"
-
-  if [ -w "$HOME/.zshrc.local" ]; then
-    zshrc="$HOME/.zshrc.local"
-  else
-    zshrc="$HOME/.zshrc"
-  fi
-
-  if ! grep -Fqs "$text" "$zshrc"; then
-    if [ "$skip_new_line" -eq 1 ]; then
-      printf "%s\n" "$text" >> "$zshrc"
-    else
-      printf "\n%s\n" "$text" >> "$zshrc"
-    fi
-  fi
-}
-
 main(){
 
   if [ ! -n "$DIR" ]; then
@@ -63,12 +44,14 @@ main(){
   # Install HomeBrew
   if ! command -v brew >/dev/null; then
     fancy_echo "- Installing Homebrew ..."
+    sudo chown -R $(whoami):admin /usr/local
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    brew doctor
+    brew update
 
-    append_to_zshrc
-
-    # shellcheck disable=SC2016
-    append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
+    # So we use all of the packages we are about to install
+    echo "export PATH='/usr/local/bin:$PATH'\n" >> ~/.bashrc
+    source ~/.bashrc
 
     export PATH="/usr/local/bin:$PATH"
     fancy_echo "    ${GREEN}done${NORMAL}"
@@ -110,11 +93,14 @@ main(){
   fancy_echo "    ${GREEN}done${NORMAL}"
 
   # install oh-my-zsh
-  fancy_echo "- Zsh ..."
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  cp "$HOME/.dotfiles/init/iterm/cobalt2.zsh-theme" "$ZSH/themes/"
-  cp ./.zshrc ~/.zshrc
-  fancy_echo "    ${GREEN}done"
+  if [ ! -n "~/.zshrc" ]; then
+      echo "$FILE exists."
+      fancy_echo "- Zsh ..."
+      sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+      cp "$HOME/.dotfiles/init/iterm/cobalt2.zsh-theme" "$ZSH/themes/"
+      cp ./.zshrc ~/.zshrc
+      fancy_echo "    ${GREEN}done"
+  fi
 
   # install brew + cask
   fancy_echo "- brew / cask ..."
