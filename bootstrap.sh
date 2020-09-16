@@ -65,7 +65,7 @@ main(){
     fancy_echo "Installing Homebrew ..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-    append_to_zshrc '# recommended by brew doctor'
+    append_to_zshrc
 
     # shellcheck disable=SC2016
     append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
