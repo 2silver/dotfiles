@@ -102,11 +102,11 @@ main(){
       fancy_echo "    ${GREEN}done"
   fi
 
-  # install brew + cask
-  fancy_echo "- brew / cask ..."
-  source .brew
-  source .cask
-  fancy_echo "    done"
+  # # install brew + cask
+  # fancy_echo "- brew / cask ..."
+  # source .brew
+  # source .cask
+  # fancy_echo "    done"
 
   # install nvm -> does not work with brew
   fancy_echo "- Node Version Manager ..."
