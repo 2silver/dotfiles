@@ -104,12 +104,6 @@ main(){
   ln -sf ~/.dotfiles/.zshrc ~/.zshrc
   fancy_echo "    ${GREEN}done${NORMAL}"
 
-  # setup all configs ...
-  fancy_echo "- Bash Profile ..."
-  # Load bash profile
-  source ~/.bash_profile
-  fancy_echo "    ${GREEN}done${NORMAL}"
-
   # install brew + cask packages
   fancy_echo "- Homebrew git ..."
   brew install git
@@ -156,6 +150,13 @@ main(){
   # ln -s /Users/nscgraf/.dotfiles/init/vscode/keybindings.json /Users/nscgraf/Library/Application\ Support/Code/User/keybindings.json
   # ln -s /Users/nscgraf/.dotfiles/init/vscode/snippets/ /Users/nscgraf/Library/Application\ Support/Code/User
   # END
+
+
+  # setup all configs ...
+  fancy_echo "- Bash Profile ..."
+  # Load bash profile
+  source ~/.bash_profile
+  fancy_echo "    ${GREEN}done${NORMAL}"
 
   fancy_echo "${GREEN}"
   echo ''
