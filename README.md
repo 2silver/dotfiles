@@ -5,19 +5,7 @@
 
 ## Installation
 
-- Install SSH-Key
-    ```bash
-    mkdir ~/.ssh && chmod 700 ~/.ssh && touch ~/.ssh/authorized_keys && chmod 644 ~/.ssh/authorized_keys && touch ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
-    ```
-    Copy/Move/Generate SSH-Keys
-    ```bash
-    chmod 644 ~/.ssh/*.pub && chmod 600 ~/.ssh/id_rsa
-    ```
-- Install Apple Developer Tools for Current OSX
-    ```bash
-    xcode-select --install
-    ```
-- Using Git and the bootstrap script
+- Using the bootstrap script
     ```bash
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/2silver/dotfiles/master/bootstrap.sh)"
     ```

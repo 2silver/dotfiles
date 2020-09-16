@@ -126,10 +126,10 @@ main(){
 
   # # install brew + cask
   fancy_echo "- brew / cask ..."
-  source .brew
+  source ~/.dotfiles/.brew
   fancy_echo "===> Brew ${GREEN}done${NORMAL}"
   INSTALLED+=('brew')
-  source .cask
+  source ~/.dotfiles/.cask
   fancy_echo "===> Casks ${GREEN}done${NORMAL}"
   INSTALLED+=('casks')
 
