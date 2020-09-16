@@ -112,26 +112,32 @@ main(){
   # fancy_echo "    done"
 
   # install nvm -> does not work with brew
-  fancy_echo "- Node Version Manager ..."
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-  fancy_echo "    ${GREEN}done${NORMAL}"
+  if ! command -v nvm >/dev/null; then
+    fancy_echo "- Node Version Manager ..."
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+    fancy_echo "    ${GREEN}done${NORMAL}"
+  fi
 
   ## rvm
-  fancy_echo "- Ruby Version Manager ..."
-  curl -sSL https://get.rvm.io | bash -s stable
-  fancy_echo "${GREEN}    done${NORMAL}"
+  if ! command -v rvm >/dev/null; then
+    fancy_echo "- Ruby Version Manager ..."
+    curl -sSL https://get.rvm.io | bash -s stable
+    fancy_echo "${GREEN}    done${NORMAL}"
+  fi
 
   # Microsoft Visual Code
-  # Make settings folder if it doesn't exist
-  if [[ ! -d "$VSCODE_USERPATH" ]]; then
-    fancy_echo "[vscode settings] Making settings folder.. ($ST_USERPATH)"
-    ln -sfn "$VSCODE_DOTFILEPATH"/* "$VSCODE_USERPATH"
-  fi
-  # If file exists already, move into dotfiles (git will track differences)
-  if [[ -f "$VSCODE_USERPATH" ]] && [[ ! -h "$VSCODE_USERPATH" ]]; then
-    fancy_echo "[vscode settings] User settings found, moving into dotfiles.. ($VSCODE_DOTFILEPATH)"
-    rm -rf "$VSCODE_USERPATH"
-    ln -sfn "$VSCODE_DOTFILEPATH"/* "$VSCODE_USERPATH"
+  if ! command -v code >/dev/null; then
+    # Make settings folder if it doesn't exist
+    if [[ ! -d "$VSCODE_USERPATH" ]]; then
+      fancy_echo "[vscode settings] Making settings folder.. ($ST_USERPATH)"
+      ln -sfn "$VSCODE_DOTFILEPATH"/* "$VSCODE_USERPATH"
+    fi
+    # If file exists already, move into dotfiles (git will track differences)
+    if [[ -f "$VSCODE_USERPATH" ]] && [[ ! -h "$VSCODE_USERPATH" ]]; then
+      fancy_echo "[vscode settings] User settings found, moving into dotfiles.. ($VSCODE_DOTFILEPATH)"
+      rm -rf "$VSCODE_USERPATH"
+      ln -sfn "$VSCODE_DOTFILEPATH"/* "$VSCODE_USERPATH"
+    fi
   fi
 
   # if automatic is not working use this
