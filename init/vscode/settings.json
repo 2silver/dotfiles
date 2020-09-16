@@ -45,12 +45,12 @@
   "python.pythonPath": "/Users/nscgraf/.pyenv/versions/2.7.17/bin/python",
   "python.analysis.completeFunctionParens": true,
   "xmlTools.enforcePrettySelfClosingTagOnFormat": true,
-  "xmlTools.splitAttributesOnFormat": true,
   "[xml]": {
     "editor.defaultFormatter": "DotJoshJohnson.xml"
   },
   "editor.formatOnSaveMode": "modifications",
   "editor.formatOnType": true,
   "diffEditor.codeLens": true,
-  "editor.minimap.renderCharacters": false
+  "editor.minimap.renderCharacters": false,
+  "xmlTools.splitXmlnsOnFormat": false
 }
