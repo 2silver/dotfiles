@@ -96,8 +96,8 @@ main(){
   cp ./.zshrc ~/.zshrc
 
   # install brew + cask
-  source .brew
-  source .cask
+  # source .brew
+  # source .cask
 
   # install nvm -> does not work with brew
   curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
