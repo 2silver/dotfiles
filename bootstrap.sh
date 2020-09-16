@@ -39,12 +39,13 @@ main(){
   INSTALLED=()
 
   fancy_echo "Install .ssh Folder and set permission"
-
-  mkdir ~/.ssh && chmod 700 ~/.ssh \
+  mkdir ~/.ssh \
+  && chmod 700 ~/.ssh \
   && touch ~/.ssh/authorized_keys \
   && chmod 644 ~/.ssh/authorized_keys \
   && touch ~/.ssh/known_hosts \
   && chmod 644 ~/.ssh/known_hosts
+  fancy_echo "===> SSH Setup -> ${GREEN}done${NORMAL}"
 
   fancy_echo "Please copy your SSH-Key's"
   read -n 1 -s -r -p "Press any key to continue"
@@ -56,8 +57,9 @@ main(){
   echo
   if [ -n "~/.ssh/id_rsa" ]; then
     chmod 644 ~/.ssh/*.pub && chmod 600 ~/.ssh/id_rsa
+    fancy_echo "===> SSH Permissions ${GREEN}done${NORMAL}"
   else
-    fancy_echo "Ok, no SSH-Keys are installed...."
+    fancy_echo "${GREEN}OK${NORMAL}, no SSH-Keys are installed...."
   fi
 
   fancy_echo "- Installing Apple Developer Tools"
