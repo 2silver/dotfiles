@@ -57,6 +57,15 @@ main(){
     fancy_echo "    ${GREEN}done${NORMAL}"
   fi
 
+
+  # install brew + cask packages
+  fancy_echo "- Homebrew git ..."
+  brew install git
+  fancy_echo "    ${GREEN}done${NORMAL}"
+
+  # git clone dotfiles repo
+  cd ~ && git clone git@github.com:2silver/dotfiles.git ./.dotfiles && cd ./.dotfiles && chmod a+x bootstrap.sh && ./bootstrap.sh
+
   # Prevent the cloned repository from having insecure permissions. Failing to do
   # so causes compinit() calls to fail with "command not found: compdef" errors
   # for users with insecure umasks (e.g., "002", allowing group writability). Note
@@ -85,11 +94,6 @@ main(){
   ln -sf ~/.dotfiles/.vimrc ~/.vimrc &&\
   ln -sf ~/.dotfiles/.wgetrc ~/.wgetrc &&\
   ln -sf ~/.dotfiles/.zshrc ~/.zshrc
-  fancy_echo "    ${GREEN}done${NORMAL}"
-
-  # install brew + cask packages
-  fancy_echo "- Homebrew git ..."
-  brew install git
   fancy_echo "    ${GREEN}done${NORMAL}"
 
   # install oh-my-zsh
