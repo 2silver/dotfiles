@@ -48,8 +48,10 @@ main(){
 
   fancy_echo "Please copy your SSH-Key's"
   read -n 1 -s -r -p "Press any key to continue"
+  echo
   open ~/.ssh
   read -n 1 -s -r -p "Files copied ? Press any key to continue"
+  echo
   if [ -n "~/.ssh/id_rsa" ]; then
     chmod 644 ~/.ssh/*.pub && chmod 600 ~/.ssh/id_rsa
   else
@@ -82,16 +84,6 @@ main(){
   brew install git
   fancy_echo "===> Homebrew Git ${GREEN}done${NORMAL}"
   INSTALLED+=('homebrew - git')
-
-  # git clone dotfiles repo
-  cd ~ && git clone git@github.com:2silver/dotfiles.git ./.dotfiles && cd ./.dotfiles && chmod a+x bootstrap.sh && ./bootstrap.sh
-
-  # Prevent the cloned repository from having insecure permissions. Failing to do
-  # so causes compinit() calls to fail with "command not found: compdef" errors
-  # for users with insecure umasks (e.g., "002", allowing group writability). Note
-  # that this will be ignored under Cygwin by default, as Windows ACLs take
-  # precedence over umasks except for filesystems mounted with option "noacl".
-  umask g-w,o-w
 
   # make an symbolic link for all . in folder .dotfiles
   fancy_echo "- Symbolic Link for dotfiles ..."
