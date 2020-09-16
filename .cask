@@ -4,9 +4,11 @@
 
 #browser
 brew cask install google-chrome
-brew cask install homebrew/cask-versions/google-chrome-canary --language=en
+# brew cask install homebrew/cask-versions/google-chrome-canary --language=en
+brew cask install google-chrome-canary --language=en
 brew cask install firefox  --languages=en
-brew cask install homebrew/cask-versions/firefox-developer-edition --language=en
+# brew cask install homebrew/cask-versions/firefox-developer-edition --language=en
+brew cask install firefox-developer-edition --language=en
 brew cask install blisk
 brew cask install brave-browser
 brew cask install seamonkey@2.11
@@ -14,7 +16,10 @@ brew cask install seamonkey@2.11
 #development
 brew cask install iterm2
 brew cask install parallels
-brew cask install transmit
+# brew cask install transmit  # --> cyberduck
+brew cask install cyberduck
+brew cask install mountain-duck
+
 brew cask install visual-studio-code
 # brew cask install sublime-text --> give visual code a try
 # brew cask install atom --> not ready yet
@@ -27,7 +32,7 @@ brew cask install docker  # --> via .brew is not enough
 brew cask install 1password
 brew cask install adobe-creative-cloud
 brew cask install alfred
-brew cask install bot-framework-emulator
+# brew cask install bot-framework-emulator
 brew cask install coconutbattery
 brew cask install dropbox
 # brew cask install flux  # --> not in use since catalina
@@ -53,12 +58,13 @@ brew cask install spotify
 brew cask install steam
 brew cask install the-unarchiver
 # brew cask install time-out  # --> not in use for now
-brew cask install timing
+# brew cask install timing
 brew cask install tuxera-ntfs
+brww cask install virtualbox
 brew cask install virtualbox-extension-pack
 brew cask install vlc
 # brew cask install whatsapp  # --> franz
-brew cask install ynab
+# brew cask install ynab
 
 # diff tool
 brew cask install kaleidoscope

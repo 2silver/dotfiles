@@ -38,6 +38,29 @@ fancy_echo() {
 main(){
   INSTALLED=()
 
+  fancy_echo "Install .ssh Folder and set permission"
+
+  mkdir ~/.ssh && chmod 700 ~/.ssh \
+  && touch ~/.ssh/authorized_keys \
+  && chmod 644 ~/.ssh/authorized_keys \
+  && touch ~/.ssh/known_hosts \
+  && chmod 644 ~/.ssh/known_hosts
+
+  fancy_echo "Please copy your SSH-Key's"
+  read -n 1 -s -r -p "Press any key to continue"
+  open ~/.ssh
+  read -n 1 -s -r -p "Files copied ? Press any key to continue"
+  if [ -n "~/.ssh/id_rsa" ]; then
+    chmod 644 ~/.ssh/*.pub && chmod 600 ~/.ssh/id_rsa
+  else
+    fancy_echo "Ok, no SSH-Keys are installed...."
+  fi
+
+  fancy_echo "- Installing Apple Developer Tools"
+  xcode-select --install
+  fancy_echo "===> Apple Developer Tools ${GREEN}done${NORMAL}"
+  INSTALLED+=('apple-developer-tools')
+
   # Install HomeBrew
   if ! command -v brew >/dev/null; then
     fancy_echo "- Installing Homebrew ..."
