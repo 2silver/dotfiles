@@ -77,7 +77,6 @@ main(){
     INSTALLED+=('homebrew')
   fi
 
-
   # install brew + cask packages
   fancy_echo "- Homebrew git ..."
   brew install git
@@ -130,13 +129,13 @@ main(){
   fi
 
   # # install brew + cask
-  # fancy_echo "- brew / cask ..."
-  # source .brew
-  # fancy_echo "===> Brew ${GREEN}done${NORMAL}"
-  # INSTALLED+=('brew')
-  # source .cask
-  # fancy_echo "===> Casks ${GREEN}done${NORMAL}"
-  # INSTALLED+=('casks')
+  fancy_echo "- brew / cask ..."
+  source .brew
+  fancy_echo "===> Brew ${GREEN}done${NORMAL}"
+  INSTALLED+=('brew')
+  source .cask
+  fancy_echo "===> Casks ${GREEN}done${NORMAL}"
+  INSTALLED+=('casks')
 
   # install nvm -> does not work with brew
   if ! command -v nvm >/dev/null; then
