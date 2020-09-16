@@ -82,7 +82,28 @@ main(){
 
   # make an symbolic link for all . in folder .dotfiles
   fancy_echo "Symbolic Link for dotfiles ..."
-  ln -sf ~/.dotfiles/.* ~/
+  ln -sf ~/.dotfiles/.aliases ~/.aliases
+  ln -sf ~/.dotfiles/.bash_profile ~/.bash_profile
+  ln -sf ~/.dotfiles/.brew ~/.brew
+  ln -sf ~/.dotfiles/.buildout ~/.buildout
+  ln -sf ~/.dotfiles/.cask ~/.cask
+  ln -sf ~/.dotfiles/.editorconfig ~/.editorconfig
+  ln -sf ~/.dotfiles/.eslintrc ~/.eslintrc
+  ln -sf ~/.dotfiles/.exports ~/.exports
+  ln -sf ~/.dotfiles/.functions ~/.functions
+  ln -sf ~/.dotfiles/.gitattributes ~/.gitattributes
+  ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
+  ln -sf ~/.dotfiles/.gitignore ~/.gitignore
+  ln -sf ~/.dotfiles/.htmlhintrc ~/.htmlhintrc
+  ln -sf ~/.dotfiles/.inputrc ~/.inputrc
+  ln -sf ~/.dotfiles/.isort.cfg ~/.isort.cfg
+  ln -sf ~/.dotfiles/.macosx ~/.macosx
+  ln -sf ~/.dotfiles/.screenrc ~/.screenrc
+  ln -sf ~/.dotfiles/.stylelintrc ~/.stylelintrc
+  ln -sf ~/.dotfiles/.vim ~/.vim
+  ln -sf ~/.dotfiles/.vimrc ~/.vimrc
+  ln -sf ~/.dotfiles/.wgetrc ~/.wgetrc
+  ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 
   # setup all configs ...
   # Load bash profile
