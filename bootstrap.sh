@@ -89,6 +89,9 @@ main(){
   fancy_echo "===> Homebrew Git ${GREEN}done${NORMAL}"
   INSTALLED+=('homebrew - git')
 
+  # git clone dotfiles repo
+  cd ~ && git clone git@github.com:2silver/dotfiles.git ./.dotfiles
+
   # make an symbolic link for all . in folder .dotfiles
   fancy_echo "- Symbolic Link for dotfiles ..."
   ln -sf ~/.dotfiles/.aliases ~/.aliases &&\
