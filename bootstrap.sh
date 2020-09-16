@@ -81,6 +81,7 @@ main(){
   umask g-w,o-w
 
   # make an symbolic link for all . in folder .dotfiles
+  fancy_echo "Symbolic Link for dotfiles ..."
   ln -sf ~/.dotfiles/.* ~/
 
   # setup all configs ...

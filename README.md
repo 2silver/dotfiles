@@ -19,7 +19,7 @@
     ```
 - Using Git and the bootstrap script
     ```bash
-    cd ~ && git clone git@github.com:2silver/dotfiles.git ./.dotfiles && cd ./.dotfiles && chmod a+x bootstrap.sh && bootstrap.sh
+    cd ~ && git clone git@github.com:2silver/dotfiles.git ./.dotfiles && cd ./.dotfiles && chmod a+x bootstrap.sh && ./bootstrap.sh
     ```
 
 ### Install fonts
