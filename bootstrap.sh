@@ -107,7 +107,7 @@ main(){
   # setup all configs ...
   fancy_echo "- Bash Profile ..."
   # Load bash profile
-  source ~/.bash_profile;
+  source ~/.bash_profile
   fancy_echo "    ${GREEN}done${NORMAL}"
 
   # install brew + cask packages
