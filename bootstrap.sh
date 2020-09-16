@@ -44,7 +44,7 @@ main(){
   # Install HomeBrew
   if ! command -v brew >/dev/null; then
     fancy_echo "- Installing Homebrew ..."
-    sudo chown -R $(whoami):admin /usr/local
+    # sudo chown -R $(whoami):admin /usr/local
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     brew doctor
     brew update
