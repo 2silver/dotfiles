@@ -52,7 +52,6 @@ brew install ffmpeg
 brew install freetype
 brew install giflib
 brew install jpeg
-brew install jpeg9
 brew install lame
 brew install libdvdcss # for HandBranke
 brew install libogg
