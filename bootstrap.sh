@@ -129,6 +129,7 @@ main(){
 
   # # install brew + cask
   fancy_echo "- brew / cask ..."
+  mkdir ~/Library/LaunchAgents
   source ~/.dotfiles/.brew
   fancy_echo "===> Brew ${GREEN}done${NORMAL}"
   INSTALLED+=('brew')
