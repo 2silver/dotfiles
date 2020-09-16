@@ -49,8 +49,10 @@ main(){
   fancy_echo "Please copy your SSH-Key's"
   read -n 1 -s -r -p "Press any key to continue"
   echo
+  echo
   open ~/.ssh
   read -n 1 -s -r -p "Files copied ? Press any key to continue"
+  echo
   echo
   if [ -n "~/.ssh/id_rsa" ]; then
     chmod 644 ~/.ssh/*.pub && chmod 600 ~/.ssh/id_rsa
