@@ -16,7 +16,7 @@ open ~/.dotfiles/init/fonts
 ```
 
 ```bash
-cd ~/ && git clone git@gitlab.com:2silver/dotfiles.git ./.dotfiles && cd ./.dotfiles && source bootstrap.sh
+cd ~ && git clone git@github.com:2silver/dotfiles.git ./.dotfiles && cd ./.dotfiles && chmod a+x bootstrap.sh && bootstrap.sh
 ```
 
 

@@ -63,7 +63,7 @@ main(){
   # Install HomeBrew
   if ! command -v brew >/dev/null; then
     fancy_echo "Installing Homebrew ..."
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
     append_to_zshrc '# recommended by brew doctor'
 
@@ -93,7 +93,7 @@ main(){
   source ~/.bash_profile;
 
   # install nvm -> does not work with brew
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh |  bash
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 
   ## rvm
   curl -sSL https://get.rvm.io | bash -s stable
