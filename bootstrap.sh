@@ -73,11 +73,6 @@ main(){
     export PATH="/usr/local/bin:$PATH"
   fi
 
-
-  # install brew + cask packages
-  brew install git
-  # we can now fetch out .dotfiles from repository
-
   # Prevent the cloned repository from having insecure permissions. Failing to do
   # so causes compinit() calls to fail with "command not found: compdef" errors
   # for users with insecure umasks (e.g., "002", allowing group writability). Note
@@ -92,20 +87,23 @@ main(){
   # Load bash profile
   source ~/.bash_profile;
 
-  # install nvm -> does not work with brew
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-
-  ## rvm
-  curl -sSL https://get.rvm.io | bash -s stable
-
-  # install brew + cask
-  source .brew
-  source .cask
+  # install brew + cask packages
+  brew install git
 
   # install oh-my-zsh
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   cp "$HOME/.dotfiles/init/iterm/cobalt2.zsh-theme" "$ZSH/themes/"
   cp ./.zshrc ~/.zshrc
+
+  # install brew + cask
+  source .brew
+  source .cask
+
+  # install nvm -> does not work with brew
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+  ## rvm
+  curl -sSL https://get.rvm.io | bash -s stable
 
   # Microsoft Visual Code
   # Make settings folder if it doesn't exist
