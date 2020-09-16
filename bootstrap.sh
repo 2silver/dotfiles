@@ -81,12 +81,10 @@ main(){
   umask g-w,o-w
 
   # make an symbolic link for all . in folder .dotfiles
-  fancy_echo "Symbolic Link for dotfiles ..."
+  fancy_echo "- Symbolic Link for dotfiles ..."
   ln -sf ~/.dotfiles/.aliases ~/.aliases
   ln -sf ~/.dotfiles/.bash_profile ~/.bash_profile
-  ln -sf ~/.dotfiles/.brew ~/.brew
   ln -sf ~/.dotfiles/.buildout ~/.buildout
-  ln -sf ~/.dotfiles/.cask ~/.cask
   ln -sf ~/.dotfiles/.editorconfig ~/.editorconfig
   ln -sf ~/.dotfiles/.eslintrc ~/.eslintrc
   ln -sf ~/.dotfiles/.exports ~/.exports
@@ -97,7 +95,6 @@ main(){
   ln -sf ~/.dotfiles/.htmlhintrc ~/.htmlhintrc
   ln -sf ~/.dotfiles/.inputrc ~/.inputrc
   ln -sf ~/.dotfiles/.isort.cfg ~/.isort.cfg
-  ln -sf ~/.dotfiles/.macosx ~/.macosx
   ln -sf ~/.dotfiles/.screenrc ~/.screenrc
   ln -sf ~/.dotfiles/.stylelintrc ~/.stylelintrc
   ln -sf ~/.dotfiles/.vim ~/.vim
@@ -106,25 +103,31 @@ main(){
   ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 
   # setup all configs ...
+  fancy_echo "- Bash Profile ..."
   # Load bash profile
   source ~/.bash_profile;
 
   # install brew + cask packages
+  fancy_echo "- Homebrew git ..."
   brew install git
 
   # install oh-my-zsh
+  fancy_echo "- Zsh ..."
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   cp "$HOME/.dotfiles/init/iterm/cobalt2.zsh-theme" "$ZSH/themes/"
   cp ./.zshrc ~/.zshrc
 
   # install brew + cask
+  # fancy_echo "- brew / cask ..."
   # source .brew
   # source .cask
 
   # install nvm -> does not work with brew
+  fancy_echo "- Node Version Manager ..."
   curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 
   ## rvm
+  fancy_echo "- Ruby Version Manager ..."
   curl -sSL https://get.rvm.io | bash -s stable
 
   # Microsoft Visual Code
