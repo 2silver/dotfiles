@@ -5,8 +5,8 @@
 # brew update
 # brew upgrade
 brew install terminal-notifier
-brew tap domt4/autoupdate
-brew autoupdate --start --upgrade --cleanup --enable-notifications
+# brew tap domt4/autoupdate
+# brew autoupdate --start --upgrade --cleanup --enable-notifications
 
 # simple control brew services (ex. postgresql -> 'brew services start postgresql')
 brew tap homebrew/services
