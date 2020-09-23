@@ -6,7 +6,7 @@
 brew cask install google-chrome
 # brew cask install homebrew/cask-versions/google-chrome-canary --language=en
 brew cask install google-chrome-canary --language=en
-brew cask install firefox  --languages=en
+brew cask install firefox  --language=en
 # brew cask install homebrew/cask-versions/firefox-developer-edition --language=en
 brew cask install firefox-developer-edition --language=en
 brew cask install blisk
