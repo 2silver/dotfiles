@@ -130,10 +130,10 @@ main(){
   # # install brew + cask
   fancy_echo "- brew / cask ..."
   mkdir ~/Library/LaunchAgents
-  source ~/.dotfiles/.brew
+  env HOMEBREW_AUTO_UPDATE_SECS=86400 ~/.dotfiles/.brew
   fancy_echo "===> Brew ${GREEN}done${NORMAL}"
   INSTALLED+=('brew')
-  source ~/.dotfiles/.cask
+  env HOMEBREW_AUTO_UPDATE_SECS=86400 ~/.dotfiles/.cask
   fancy_echo "===> Casks ${GREEN}done${NORMAL}"
   INSTALLED+=('casks')
 
