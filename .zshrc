@@ -36,6 +36,9 @@ export PATH="/usr/local/bin:/usr/local/opt:/usr/bin:/bin:/usr/sbin:/sbin:/usr/lo
 export EDITOR='code'
 export MANPATH="/usr/local/man:$MANPATH"
 
+# Update homebrew once a week
+export HOMEBREW_AUTO_UPDATE_SECS=86400
+
 # deactivate share_history
 unsetopt share_history
 
