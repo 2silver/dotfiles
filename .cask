@@ -28,6 +28,7 @@ brew cask install visual-studio-code
 brew cask install navicat-premium
 
 #other
+brew cask install forklift
 brew cask install docker  # --> via .brew is not enough
 brew cask install 1password
 brew cask install adobe-creative-cloud
