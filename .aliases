@@ -14,9 +14,11 @@ alias dropbox="cd ~/Documents/Dropbox"
 alias downloads="cd ~/Downloads"
 alias desktop="cd ~/Desktop"
 alias g="git"
+alias gco="git checkout"
 alias h="history"
 alias v="vim"
 alias o="open"
+alias sleepnow="pmset sleepnow"
 
 # pretty print json
 # usage: curl **.json | prettyjson
@@ -121,9 +123,6 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
-# scp . to jedi.hetzner
-alias scpjedi="scp -P 2281 ./* hz-user2012@176.9.145.173:/home/hz-user2012/"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"

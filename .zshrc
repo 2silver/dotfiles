@@ -21,11 +21,11 @@ export ZSH=$HOME/.oh-my-zsh
 plugins=(
   zsh-completions
   zsh-autosuggestions
-  # # git
-  # # git-prompt
-  # # history
-  # pyenv
-  # python
+  git
+  git-prompt
+  history
+  pyenv
+  python
 )
 autoload -U compinit && compinit
 
@@ -40,7 +40,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 export HOMEBREW_AUTO_UPDATE_SECS=86400
 
 # deactivate share_history
-unsetopt share_history
+# unsetopt share_history
 
 source ~/.aliases
 source ~/.functions
