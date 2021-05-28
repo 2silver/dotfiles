@@ -6,6 +6,7 @@
 brew cask install google-chrome
 # brew cask install homebrew/cask-versions/google-chrome-canary --language=en
 brew cask install google-chrome-canary --language=en
+brew cask install chromedriver
 brew cask install firefox  --language=en
 # brew cask install homebrew/cask-versions/firefox-developer-edition --language=en
 brew cask install firefox-developer-edition --language=en
@@ -61,7 +62,9 @@ brew cask install the-unarchiver
 # brew cask install time-out  # --> not in use for now
 # brew cask install timing
 brew cask install tuxera-ntfs
-brww cask install virtualbox
+brew cask install virtualbox
+brew cask install vagrant
+brew cask install vagrant-manager
 brew cask install virtualbox-extension-pack
 brew cask install vlc
 # brew cask install whatsapp  # --> franz
