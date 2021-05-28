@@ -48,6 +48,7 @@ brew cask install ngrok
 # brew cask install microsoft-office  # install using online office365 packages
 # brew cask install moom --> installed from AppStore (License)
 # brew cask install tunnelblick
+brew cask mqtt-explorer
 brew cask install coccinellida
 brew cask install homebrew/cask-versions/microsoft-remote-desktop-beta
 brew cask install onedrive
