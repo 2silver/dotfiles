@@ -6,7 +6,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
@@ -23,13 +22,16 @@ alias sleepnow="pmset sleepnow"
 # pretty print json
 # usage: curl **.json | prettyjson
 # usage: prettyjson myfile.json
-alias prettyjson="python -m json.tool"
+alias prettyjson="python3 -m json.tool"
 
 # Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
-    colorflag="--color"
-else # OS X `ls`
-    colorflag="-G"
+if ls --color >/dev/null 2>&1; then
+  colorflag="--color"
+else
+  colorflag="-G"
+  export CLICOLOR=1
+  # optional: BSD ls color scheme
+  # export LSCOLORS="ExFxBxDxCxegedabagacad"
 fi
 
 # List all files colorized in long format
@@ -39,10 +41,10 @@ fi
 alias l="ls -lah ${colorflag}"
 
 # List only directories
-alias lsd='ls -l ${colorflag} | grep "^d"'
+alias lsd='ls -ld */ 2>/dev/null'
 
 # List all files as simple 1 column list
-alias lsl="ls -m1 ${colorflag}"
+alias lsl="ls -1 ${colorflag}"
 
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
@@ -52,13 +54,20 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 alias sudo='sudo '
 
 # Copy current pwd to clipboard
-alias p="pwd | tr -d '\n' | pbcopy && echo -e '\e[37mCopied pwd to clipboard.\e[0m'"
+# alias p="pwd | tr -d '\n' | pbcopy && echo -e '\e[37mCopied pwd to clipboard.\e[0m'"
+p() {
+  local pwd_output
+  pwd_output="$(pwd)"
+  printf "%s" "$pwd_output" | pbcopy
+  printf "\e[90mCopied\e[0m \e[37m%s\e[0m to clipboard.\n" "$pwd_output"
+}
+
 
 # Gzip-enabled `curl`
 alias gurl='curl --compressed'
 
 # echo $PATH seperated on lines
-alias path="echo $PATH | 'tr' : '\n'"
+alias path='printf "%s\n" "$PATH" | tr ":" "\n"'
 
 # Get week number
 alias week='date +%V'
@@ -70,8 +79,12 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update'
 
 # Recursively delete `.DS_Store` files
-#alias cleanup="find . -type f -name '*.DS_Store' -or -name '*.egg-info' -or -name '*.pyc' -ls -delete"
-alias cleanup="find . -name '*.DS_Store' -or -name '__MACOSX' -or -name '*.egg-info' -or -name '*.pyc' -or -name '*.pyo' -or -name 'Desktop.ini' -or -name 'desktop.ini' -or -name 'thumbs.db' | xargs rm -rf"
+cleanup() {
+  find . \
+    \( -name '.DS_Store' -o -name '__MACOSX' -o -name '*.egg-info' -o -name '*.pyc' -o -name '*.pyo' \
+       -o -iname 'desktop.ini' -o -iname 'thumbs.db' \) \
+    -exec rm -rf -- {} +
+}
 alias cleanuppy="rm -rf .installed.cfg .mr.developer.cfg bin Paste* eggs develop-eggs parts var/log && cleanup"
 alias cleanplonedb="rm -rf blobstorage filestorage instance1 log eggcache"
 
@@ -92,7 +105,6 @@ alias sha1='openssl sha1'
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # IP addresses
 alias publicip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -119,7 +131,11 @@ done
 
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+chromekill() {
+  local pids
+  pids=$(ps ax -o pid=,command= | awk '/Chrome Helper --type=renderer/ && !/extension-process/ {print $1}')
+  [ -n "$pids" ] && echo "$pids" | xargs kill
+}
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
