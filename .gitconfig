@@ -140,6 +140,9 @@
   # Include summaries of merged commits in newly created merge commit messages
   log = true
 
+[commit]
+gpgsign = true
+
 [push]
 
   # Use the Git 1.x.x default to avoid errors on machines with old Git
@@ -170,9 +173,12 @@
 [url "git://gist.github.com/"]
 
   insteadOf = "gist:"
+[gpg]
+format = ssh
 [user]
   name = Michael Graf
-	email = michael.graf@fhstp.ac.at
+  email = mig.graf@gmail.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMngMIucz//nojXY95ZD2OCnlQpbk1O7sDauzrocuNPw nscgraf@macnscgraf
 
 [difftool "Kaleidoscope"]
     cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"

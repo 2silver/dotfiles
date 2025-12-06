@@ -70,15 +70,25 @@ main(){
   # Install HomeBrew
   if ! command -v brew >/dev/null; then
     fancy_echo "- Installing Homebrew ..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # Add Homebrew to PATH for this session
+    eval "$($(brew --prefix)/bin/brew shellenv)"
+
     brew doctor
     brew update
 
-    # So we use all of the packages we are about to install
-    echo "export PATH='/usr/local/bin:$PATH'\n" >> ~/.bashrc
-    source ~/.bashrc
+    # WHY???
+    # Add Homebrew to shell configuration
+    # echo "\n# Homebrew" >> ~/.zshrc
+    # echo 'eval "$($(brew --prefix)/bin/brew shellenv)"' >> ~/.zshrc
 
-    export PATH="/usr/local/bin:$PATH"
+    # Also add to bash if needed
+    # if [ -f ~/.bashrc ]; then
+    #   echo "\n# Homebrew" >> ~/.bashrc
+    #   echo 'eval "$($(brew --prefix)/bin/brew shellenv)"' >> ~/.bashrc
+    # fi
+
     fancy_echo "===> Homebrew ${GREEN}done${NORMAL}"
     INSTALLED+=('homebrew')
   fi
@@ -130,7 +140,7 @@ main(){
   # # install brew + cask
   fancy_echo "- brew / cask ..."
   mkdir ~/Library/LaunchAgents
-  env HOMEBREW_AUTO_UPDATE_SECS=86400 ~/.dotfiles/.brew
+  env HOMEBREW_AUTO_UPDATE_SECS=86400 ~/.dotfiles/.brew.sh
   fancy_echo "===> Brew ${GREEN}done${NORMAL}"
   INSTALLED+=('brew')
   env HOMEBREW_AUTO_UPDATE_SECS=86400 ~/.dotfiles/.cask

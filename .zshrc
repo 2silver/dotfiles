@@ -1,71 +1,86 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/nscgraf/.oh-my-zsh
+# only for zsh-performance-test
+# call with zprof
+# zmodload zsh/zprof
 
-ZSH_THEME="agnoster"
+source "$(brew --prefix)/opt/spaceship/spaceship.zsh"
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# install zsh-completions, zsh-autosuggestions via breww
-# if type brew &>/dev/null; then
-#   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-#   autoload -Uz compinit
-#   compinit
-# fi
-# 
-# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# END
+# ZSH_THEME="agnoster"
+# important empty for spaceship 
+ZSH_THEME=""
 
+# Uncomment one of the following lines to change the auto-update behavior
+zstyle ':omz:update' mode disabled  # disable automatic updates
+
+# Uncomment the following line to change how often to auto-update (in days).
+zstyle ':omz:update' frequency 31
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  zsh-completions
-  zsh-autosuggestions
-  git
-  git-prompt
-  history
-  pyenv
-  python
+    git
+# we have had installed them via brew, no need to include hiere
+#    zsh-autosuggestions
+#    zsh-completions
 )
-autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export PATH="/usr/local/bin:/usr/local/opt:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$PATH"
-export EDITOR='code'
-export MANPATH="/usr/local/man:$MANPATH"
 
-# Update homebrew once a week
-export HOMEBREW_AUTO_UPDATE_SECS=86400
+# export MANPATH="/usr/local/man:$MANPATH"
 
-# deactivate share_history
-# unsetopt share_history
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='code'
+fi
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.aliases
 source ~/.functions
 
-# rvm
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# autoload .nvmrc if availiable in current folder
-autoload -U add-zsh-hook
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use
+# bitwarden as SSH Agent
+export SSH_AUTH_SOCK=/Users/nscgraf/.bitwarden-ssh-agent.sock
+
+
+# must be on end
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit
+
+  # only update completion cache once a day
+  if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+      compinit
+  else
+      compinit -C
   fi
-}
-add-zsh-hook chpwd load-nvmrc
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# python2 (brew)
-export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+fi
