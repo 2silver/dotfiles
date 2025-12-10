@@ -70,6 +70,8 @@ source ~/.functions
 export SSH_AUTH_SOCK=/Users/nscgraf/.bitwarden-ssh-agent.sock
 
 
+source $HOME/.local/bin/env
+
 # must be on end
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -84,3 +86,5 @@ if type brew &>/dev/null; then
       compinit -C
   fi
 fi
+
+. "$HOME/.local/bin/env"

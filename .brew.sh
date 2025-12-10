@@ -85,6 +85,7 @@ FORMULAE_OPTIONAL_SHELL=(
   # rename # --> part of perl on macO, ahhh nope
   # vim # --> macOS ships vim
   # watch # --> do we use it ?
+  uv
 )
 
 ###############################################################################
