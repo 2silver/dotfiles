@@ -78,13 +78,45 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update'
 
-# Recursively delete `.DS_Store` files
+# Recursively delete not needed files
 cleanup() {
-  find . \
-    \( -name '.DS_Store' -o -name '__MACOSX' -o -name '*.egg-info' -o -name '*.pyc' -o -name '*.pyo' \
+  # Optional safety prompt - out-comment?!
+  echo -n "Fortfahren? (J/n): "
+  read confirmation
+
+  # Die folgende Logik bleibt gleich
+  if [[ "$confirmation" != "J" && "$confirmation" != "j" ]]; then
+    echo "Reinigung abgebrochen."
+    return 1
+  fi
+
+  # 1. Ensure the 'find' command supports what we use.
+  # 2. `-depth`: Processes subdirectories before their contents, important for 'node_modules'.
+  # 3. `-type d -name 'node_modules'` should not be executed with `-exec`,
+  #    when mixed with other files, as `rm -rf` is applied to filenames.
+  #    Better: Two separate `find` calls or a more complex strategy.
+
+  echo "🔎 Searching for temporary and build files..."
+
+  # --- part One: Search and delete files ---
+
+  find . -depth \
+    \( -name '.DS_Store' -o -name '*.pyc' -o -name '*.pyo' -o -name '*.egg-info' \
        -o -iname 'desktop.ini' -o -iname 'thumbs.db' \) \
+    -exec echo "Deleting file: {}" \; \
+    -exec rm -f -- {} +
+
+  # --- part Two: Search and delete directories ---
+  find . -depth \
+    \( -name '__MACOSX' -o -name 'node_modules' \) \
+    -type d \
+    -exec echo "Deleting directory: {}" \; \
     -exec rm -rf -- {} +
+
+  echo "✅ Cleanup completed."
 }
+
+
 alias cleanuppy="rm -rf .installed.cfg .mr.developer.cfg bin Paste* eggs develop-eggs parts var/log && cleanup"
 alias cleanplonedb="rm -rf blobstorage filestorage instance1 log eggcache"
 
