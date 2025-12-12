@@ -11,7 +11,7 @@ source "$(brew --prefix)/opt/spaceship/spaceship.zsh"
 export ZSH="$HOME/.oh-my-zsh"
 
 # ZSH_THEME="agnoster"
-# important empty for spaceship 
+# important empty for spaceship
 ZSH_THEME=""
 
 # Uncomment one of the following lines to change the auto-update behavior
@@ -73,7 +73,7 @@ export SSH_AUTH_SOCK=/Users/nscgraf/.bitwarden-ssh-agent.sock
 source $HOME/.local/bin/env
 
 # must be on end
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
