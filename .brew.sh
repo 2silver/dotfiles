@@ -78,6 +78,7 @@ FORMULAE_SHELL=(
   zsh-completions
   spaceship
   # zsh
+  eza # modern ls replacement (https://github.com/eza-community/eza)
 )
 
 # Optional
@@ -86,6 +87,10 @@ FORMULAE_OPTIONAL_SHELL=(
   # vim # --> macOS ships vim
   # watch # --> do we use it ?
   uv
+  # lima and qemu for running Linux VMs, qemu for emulation of x86 on ARM64 :-)
+  lima
+  lima-additional-guestagents
+  qemu
 )
 
 ###############################################################################
