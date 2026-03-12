@@ -201,3 +201,5 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[gpg "ssh"]
+	allowedSignersFile = /Users/nscgraf/.ssh/allowed_signers
