@@ -141,7 +141,7 @@
   log = true
 
 [commit]
-gpgsign = true
+	gpgsign = true
 
 [push]
 
@@ -174,11 +174,11 @@ gpgsign = true
 
   insteadOf = "gist:"
 [gpg]
-format = ssh
+	format = ssh
 [user]
   name = Michael Graf
   email = mig.graf@gmail.com
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMngMIucz//nojXY95ZD2OCnlQpbk1O7sDauzrocuNPw nscgraf@macnscgraf
+  signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMngMIucz//nojXY95ZD2OCnlQpbk1O7sDauzrocuNPw nscgraf@macnscgraf"
 
 [difftool "Kaleidoscope"]
     cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
