@@ -586,7 +586,7 @@
 			<key>Guid</key>
 			<string>C7C1B273-92F3-48FF-BEFC-135C3A1871D6</string>
 			<key>Horizontal Spacing</key>
-			<integer>1</integer>
+			<real>1</real>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Jobs to Ignore</key>
@@ -691,7 +691,7 @@
 			<key>Use Selected Text Color</key>
 			<true/>
 			<key>Vertical Spacing</key>
-			<integer>1</integer>
+			<real>1</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
@@ -6995,7 +6995,7 @@
 			<key>Columns</key>
 			<integer>220</integer>
 			<key>Command</key>
-			<string>root@10.9.5.6</string>
+			<string>ssh root@10.9.5.6</string>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -7030,7 +7030,7 @@
 			<key>Cursor Type</key>
 			<integer>2</integer>
 			<key>Custom Command</key>
-			<string>No</string>
+			<string>SSH</string>
 			<key>Custom Directory</key>
 			<string>No</string>
 			<key>Default Bookmark</key>
