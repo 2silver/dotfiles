@@ -14,8 +14,12 @@ source $ZSH/oh-my-zsh.sh
 # --- agnoster + orbstack ---
 # show supported colors
 # for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#5}:+$'\n'}; done
-prompt_orbstack() {
-  if [[ "$(uname -r)" == *orbstack* ]]; then
+prompt_whichhost() {
+  if [[ -n "$SSH_CONNECTION" || -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]; then
+    local remote_host="${HOST:-$(hostname -s 2>/dev/null)}"
+    remote_host="${remote_host%%.*}"
+    prompt_segment 161 white "🌐 ${USER}@${remote_host}"
+  elif [[ "$(uname -r)" == *orbstack* ]]; then
     prompt_segment 124 white "🏘️ vm"
   else
     prompt_segment 242 white "🏠 local"
@@ -26,7 +30,7 @@ prompt_orbstack() {
 build_prompt() {
   RETVAL=$?
   prompt_status
-  prompt_orbstack
+  prompt_whichhost
   prompt_virtualenv
   prompt_terraform
   prompt_context
