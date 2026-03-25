@@ -61,6 +61,8 @@ brew install --cask keka
 # brew install --cask vagrant
 # brew install --cask vagrant-manager
 # brew install --cask virtualbox-extension-pack
+brew install --cask orbstack  # alternative for docker, podman,...
+brew install --cask bruno  # alternative for postman, insomnia
 brew install --cask vlc
 
 # diff tool

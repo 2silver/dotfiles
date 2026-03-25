@@ -65,16 +65,21 @@ export EDITOR='code'
 export SSH_AUTH_SOCK="/Users/nscgraf/.bitwarden-ssh-agent.sock"
 
 # --- Tooling & PATH ---
-# pnpm
-export PNPM_HOME="/Users/nscgraf/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH:$HOME/.local/bin"
+# # pnpm
+# export PNPM_HOME="/Users/nscgraf/Library/pnpm"
+# export PATH="$PNPM_HOME:$PATH:$HOME/.local/bin"
 
-# NVM (lazy loading with aliases to ensure nvm is loaded when using node/npm)
-if [ -s "$HOME/.nvm/nvm.sh" ]; then
-  alias nvm='unalias nvm node npm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm'
-  alias node='unalias nvm node npm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; node'
-  alias npm='unalias nvm node npm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; npm'
-fi
+# # NVM (lazy loading with aliases to ensure nvm is loaded when using node/npm)
+# if [ -s "$HOME/.nvm/nvm.sh" ]; then
+#   alias nvm='unalias nvm node npm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm'
+#   alias node='unalias nvm node npm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; node'
+#   alias npm='unalias nvm node npm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; npm'
+# fi
+
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 
 # --- Brew Plugins & Completions ---
 if type brew &>/dev/null; then
